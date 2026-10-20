@@ -1,0 +1,28 @@
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.2em;
+}
+
+a:hover {
+    font-size: 2em;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(85, 107, 4);
+}
+
+img {
+    border-radius: 30px;
+    border-style: solid;
+    border-color: rgb(56, 54, 54);
+    border-width: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(88, 247, 88);
+}
+
+ul {
+    list-style-type: lower-roman;
+}
