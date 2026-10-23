@@ -1,41 +1,32 @@
 'use strict';
 
-const sideA = parseFloat(prompt('Give triangle side a: '));
-const sideB = parseFloat(prompt('Give triangle side b: '));
-const sideC = parseFloat(prompt('Give triangle side c: '));
+const target = document.querySelector('#target');
+let numbers = [];
 
-if (isNaN(sideA) || isNaN(sideB) || isNaN(sideC)) {
-  document.querySelector('#target').innerHTML =
-    "You didn't give correct numbers!";
-} else if (
-  (sideA === sideB && sideA !== sideC) ||
-  (sideA !== sideB && sideA === sideC) ||
-  (sideC === sideB && sideA !== sideC)
-) {
-  document.querySelector('#target').innerHTML =
-    'A triangle with side lengths ' +
-    sideA +
-    ', ' +
-    sideB +
-    ' and ' +
-    sideC +
-    ' is an isosceles triangle.';
-} else if (sideA === sideB && sideA === sideC) {
-  document.querySelector('#target').innerHTML =
-    'A triangle with side lengths ' +
-    sideA +
-    ', ' +
-    sideB +
-    ' and ' +
-    sideC +
-    ' is an equilateral triangle.';
-} else if (sideA !== sideB && sideA !== sideC) {
-  document.querySelector('#target').innerHTML =
-    'A triangle with side lengths ' +
-    sideA +
-    ', ' +
-    sideB +
-    ' and ' +
-    sideC +
-    ' is a scalene triangle.';
+let play = true;
+
+while (play) {
+  const num = prompt("Enter a number (or 'done' to finish):");
+  if (num === 'done') {
+    play = false;
+  } else if (Number.isNaN(num)) {
+    continue;
+  } else {
+    numbers.push(parseInt(num));
+  }
 }
+
+let text = 'Even numbers: ';
+
+for (let n of numbers) {
+  if (n % 2 === 0) {
+    text += n + ', ';
+  }
+}
+
+if (text[text.length - 2] === ',') {
+  text = text.slice(0, -2);
+}
+target.textContent = text;
+
+alert('Program has ended.');
