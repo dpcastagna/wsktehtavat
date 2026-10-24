@@ -27,6 +27,10 @@ for (let n of numbers) {
 if (text[text.length - 2] === ',') {
   text = text.slice(0, -2);
 }
+
+if (text == 'Even numbers: ') {
+  text += 'None';
+}
 target.textContent = text;
 
 alert('Program has ended.');
