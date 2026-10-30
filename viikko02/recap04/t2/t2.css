@@ -25,4 +25,14 @@ td {
   padding: 0.5em 1em;
 }
 
-.highlight
+.highlight {
+  background-color: #207dda;
+}
+
+#modal {
+  background-color: #c1d5e9;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+}

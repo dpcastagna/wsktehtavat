@@ -772,11 +772,58 @@ const restaurants = [
 
 // your code here
 const table = document.getElementsByTagName('table')[0];
-
-restaurants.sort((a, b) => a.name > b.name);
+const dialog = document.getElementsByTagName('dialog')[0];
+dialog.setAttribute('id', 'modal');
+let rowList = [];
+restaurants.sort((a, b) => {
+  if (a.name < b.name) {
+    return -1;
+  } else {
+    return 1;
+  }
+});
 
 for (const res of restaurants) {
   const row = document.createElement('tr');
+  row.addEventListener('click', () => {
+    for (const r of rowList) {
+      r.classList.remove('highlight');
+    }
+    row.classList.add('highlight');
+
+    dialog.showModal();
+    dialog.addEventListener('click', () => {
+      dialog.close();
+    });
+
+    const dialogContent = document.createElement('div');
+    const dialogName = document.createElement('p');
+    const dialogAddress = document.createElement('p');
+    const dialogPostal = document.createElement('p');
+    const dialogCity = document.createElement('p');
+    const dialogPhone = document.createElement('p');
+    const dialogCompany = document.createElement('p');
+    const dialogEmpty = document.createElement('p');
+    const dialogClose = document.createElement('p');
+
+    dialogName.textContent = 'Restaurant name: ' + res.name;
+    dialogAddress.textContent = 'Address: ' + res.address;
+    dialogPostal.textContent = 'Postal code: ' + res.postalCode;
+    dialogCity.textContent = 'City: ' + res.city;
+    dialogPhone.textContent = 'Phone number: ' + res.phone;
+    dialogCompany.textContent = 'Company: ' + res.company;
+    dialogEmpty.innerHTML = '&nbsp;';
+    dialogClose.textContent = 'CLICK ANYWHERE TO CLOSE';
+    dialogContent.append(dialogName);
+    dialogContent.append(dialogAddress);
+    dialogContent.append(dialogPostal);
+    dialogContent.append(dialogCity);
+    dialogContent.append(dialogPhone);
+    dialogContent.append(dialogCompany);
+    dialogContent.append(dialogEmpty);
+    dialogContent.append(dialogClose);
+    dialog.replaceChild(dialogContent, dialog.childNodes[0]);
+  });
   const name = document.createElement('td');
   const address = document.createElement('td');
 
@@ -785,5 +832,6 @@ for (const res of restaurants) {
 
   row.append(name);
   row.append(address);
+  rowList.push(row);
   table.append(row);
 }
