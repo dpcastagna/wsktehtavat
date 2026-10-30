@@ -771,3 +771,19 @@ const restaurants = [
 ];
 
 // your code here
+const table = document.getElementsByTagName('table')[0];
+
+restaurants.sort((a, b) => a.name > b.name);
+
+for (const res of restaurants) {
+  const row = document.createElement('tr');
+  const name = document.createElement('td');
+  const address = document.createElement('td');
+
+  name.textContent = res.name;
+  address.textContent = res.address + ', ' + res.city;
+
+  row.append(name);
+  row.append(address);
+  table.append(row);
+}
